@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./external.css" />
+  </head>
+  <style>
+    body {
+      background-color: black;
+    }
+    nav {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px 10px rgb(102, 3, 102);
+    }
+    nav a {
+      text-decoration: none;
+      color: black;
+    }
+    li {
+      display: inline;
+    }
+    li a {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      float: right;
+      padding: 10px;
+      font-size: large;
+      font-weight: 400;
+
+    }
+    nav h1 {
+      color: crimson;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      padding: 10px
+    }
+    #class {
+      display: inline;
+      position: absolute;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+    }
+    .start {
+      padding: 10px;
+      border: none;
+      background-color: purple;
+      border-radius: 5px;
+      box-shadow: 3px 3px 2px 1px rgb(127, 109, 109);
+      font-size: large;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      transition: 0.2s;
+    }
+    .start a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+  </style>
+  <body>
+    
+
+    <nav>
+      <h1 style="display: inline-block">QUIZ APP</h1>
+      <li><a href="./jsquestions.html">JAVASCRIPT</a></li>
+      <li><a href="./cssquestions.html">CSS</a></li>
+      <li><a href="./htmlquestions.html">HTML</a></li>
+      <li><a href="./index.html">HOME</a></li>
+    </nav>
+
+    <div class="grid-container">
+      <div class="container" style="margin-top: 80px; margin-left: 200px">
+        <h2 style="color: black; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+          Instructions:
+        </h2>
+        <br />
+        <p
+          style="
+            font-size: 20px;
+            line-height: 30px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman',
+              serif;
+          "
+        >
+          >> Questions on html<br />
+          >> Questions on css<br />
+          >> Questions on javascript<br />
+          >> Each of them contain 5 questions and each question carries one
+          mark.<br />
+          >> Each question has only 10 seconds.<br />
+          >> Not answered within time automatically moves to next question.
+          <br />
+
+          >> Attempt all or any language you prefer <br />
+          >> If you start the quiz u can not exit the Quiz till it gets ended.
+        </p>
+        <br />
+        <button class="start">
+          <a href="./htmlquestions.html">START QUIZ</a>
+        </button>
+      </div>
+      <div class="container" style="margin-top: 80px; margin-left: 50px">
+        <img
+          style="height: 250px"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3aiFef13-U7pZpHPmgESK9xwV3tmX6RIMEA&usqp=CAU"
+        />
+        <marquee>
+          <h1 style="color: purple; margin-top: 40px">
+            Test Your Knowledge by starting the quiz.
+          </h1>
+        </marquee>
+      </div>
+    </div>
+  </body>
+</html>

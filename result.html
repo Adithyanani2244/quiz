@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./external.css" />
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        min-height: 100vh;
+        width: 100%;
+      }
+      .container {
+        text-align: center;
+        justify-content: center;
+      }
+      .load a {
+        text-decoration: none;
+        padding: 5px;
+        background-color: purple;
+        color: white;
+        border-radius: 5px;
+        box-shadow: 3px 3px 2px 1px rgb(127, 109, 109);
+        font-size: large;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        transition: 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="heading-txt">Your Score</p>
+      <h1 id="score"></h1>
+      <br />
+
+      <button class="load"><a href="./index.html">Back to Home</a></button>
+
+      <script>
+        let score = localStorage.getItem("score");
+        document.getElementById("score").innerHTML = score;
+        if ((score = !null)) {
+          let btn = document.getElementById("Restart");
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.setItem("Restart", Restart);
+          });
+          let btn1 = document.getElementById("load");
+          btn1.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.setItem("Reload", Reload);
+          });
+        }
+      </script>
+    </div>
+  </body>
+</html>

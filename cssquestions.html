@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./external.css">
+</head>
+<style>
+ body{
+  display: flex;
+  align-items: center;
+  justify-content: center;    
+  background-color: black;
+  min-height: 100vh;
+  width: 100%;
+}
+</style>
+
+<body>
+ 
+   
+    <div class="container">
+        <p class="heading-txt">Quiz APP </p>
+        <p id="timer"></p>
+        <div class="question">
+            <span id="question-number"></span>
+            <span id="question-txt"></span>
+        </div>
+        
+        <div class="option-container">
+            <input type="radio" name="opt" id="opt1">
+                <label for="opt1" id="option1"></label>
+            <input type="radio" name="opt" id="opt2">
+                <label for="opt2" id="option2"></label>
+            <input type="radio" name="opt" id="opt3">
+                <label for="opt3" id="option3"></label>
+            <input type="radio" name="opt" id="opt4">
+                <label for="opt4" id="option4"></label>
+        </div>
+        <input type="button" value="Next" id="next-button">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+
+const quizQuestions = [
+{
+ question: "What is CSS stands for?",
+ opt1: "Central Style Sheets",
+ opt2: "Cascading Style Sheets",
+ opt3: "Computer Style Sheets",
+ opt4: "Colour style Sheets",
+ correct: "opt4",
+},
+{
+ question: "How do you insert a comment in a CSS file?",
+ opt1: "//this is a comment",
+ opt2: "//this is a comment",
+ opt3: "/* this is a comment",
+ opt4: "'this is a comment",
+ correct: "opt2",
+},
+{
+ question: "Which property is used to change the background color?",
+ opt1: "color",
+ opt2: "bgcolor ",
+ opt3: "background-color",
+ opt4: "none if these",
+ correct: "opt3",
+},
+{
+ question: "Which property is used to change the left margin of an element?",
+ opt1: "indent",
+ opt2: "padding-left",
+ opt3: "margin-right",
+ opt4: "margin-left",
+ correct: "opt4",
+},
+{
+question: "Which HTML attribute is used to define inline styles?",
+         
+             opt1: "font", 
+             opt2: "style", 
+             opt3: "styles", 
+             opt4: "class", 
+             correct:"opt2"
+         
+}
+
+];
+
+let question_number_element = document.getElementById("question-number");
+let question_txt_element = document.getElementById("question-txt");
+let option_1_element = document.getElementById("option1");
+let option_2_element = document.getElementById("option2");
+let option_3_element = document.getElementById("option3");
+let option_4_element = document.getElementById("option4");
+
+let next_button = document.getElementById("next-button");
+let time_element = document.getElementById("timer");
+
+
+let current_question_number=0;
+let score=0;
+let time;
+const total_time = 10;
+let sec = total_time;
+
+
+function timer(){
+time_element.innerHTML = sec;
+sec--;
+if(sec==0){
+ sec = total_time;
+ clearInterval(time);
+ current_question_number++;
+ showQuestion();
+}    
+}
+
+
+
+function showQuestion(){
+sec = total_time; 
+clearInterval(time);
+timer();
+time = setInterval(timer,1000);
+
+document.querySelectorAll("input[name = opt]").forEach(option=> option.checked=false)
+
+if(current_question_number>=quizQuestions.length){
+ goToResultPage();
+}
+
+question_number_element.innerHTML = (current_question_number+1) + ". ";
+question_txt_element.innerHTML = quizQuestions[current_question_number].question;
+option_1_element.innerHTML = quizQuestions[current_question_number].opt1;
+option_2_element.innerHTML = quizQuestions[current_question_number].opt2;
+option_3_element.innerHTML= quizQuestions[current_question_number].opt3;
+option_4_element.innerHTML= quizQuestions[current_question_number].opt4;
+
+}
+
+
+next_button.addEventListener('click',()=>{
+let optionIdSelected = document.querySelector('input[name = opt]:checked');
+     
+let option_correct = quizQuestions[current_question_number].correct;
+if(optionIdSelected!=null)
+{            
+ if(optionIdSelected.id==option_correct){
+     score++;        
+ }
+}
+current_question_number ++;
+if(current_question_number>=quizQuestions.length){
+ goToResultPage();        
+
+}else{
+ showQuestion();
+}
+
+});
+showQuestion();
+function goToResultPage(){
+current_question_number = 0;
+localStorage.setItem("score", score);
+location.href="./result.html"
+}
+
+
+</script>
+</body>
+</html>
